@@ -33,12 +33,11 @@ class Usuario{
   - nome: string,
   - senha: string,
   - email: string
-
-  + findAll (): Promise<Usuario[]>
-  + findById(id: number): Promise<Usuario>
-  + findByUsuario(nome: string): Promise<Usuario[]>
-  + create(usuario: Usuario): Promise<Usuario>
-  + update(usuario: Usuario): Promise<Usuario>
+  + findAll() Usuario[]
+  + findById(id: number) Usuario
+  + findByUsuario(nome: string) Usuario[]
+  + create(usuario: Usuario) Usuario
+  + update(usuario: Usuario) Usuario
 }
 class Cliente{
   - id: number,
@@ -47,13 +46,13 @@ class Cliente{
   - email: string,
   - foto: string,
   - historico: string
-
-  + findAll (): Promise<Cliente[]>
-  + findById(id: number): Promise<Cliente>
-  + findByCliente(nome: string): Promise<Cliente[]>
-  + create(cliente: Cliente): Promise<Cliente>
-  + update(cliente: Cliente): Promise<Cliente>
-  + delete(id: number): Promise<DeleteResult>
+  + findAll() Cliente[]
+  + findById(id: number) Cliente
+  + findByCliente(nome: string) Cliente[]
+  + create(cliente: Cliente) Cliente
+  + update(cliente: Cliente) Cliente
+  + delete(id: number) DeleteResult
+}
 class Oportunidade{
   - id: number,
   - nome: string,
@@ -61,15 +60,14 @@ class Oportunidade{
   - abertura: date,
   - termino: date,
   - status: string
-
-  + findAll (): Promise<Oportunidade[]>
-  + findById(id: number): Promise<Oportunidade>
-  + findByNome(nome: string): Promise<Oportunidade[]>
-  + findByValor(valor: decimal): Promise<Oportunidade[]>
-  + findByStatus(status: string): Promise<Oportunidade[]>
-  + create(oportunidade: Oportunidade): Promise<Oportunidade>
-  + update(oportunidade: Oportunidade): Promise<Oportunidade>
-  + delete(id: number): Promise<DeleteResult>
+  + findAll() Oportunidade[]
+  + findById(id: number) Oportunidade
+  + findByNome(nome: string) Oportunidade[]
+  + findByValor(valor: decimal) Oportunidade[]
+  + findByStatus(status: string) Oportunidade[]
+  + create(oportunidade: Oportunidade) Oportunidade
+  + update(oportunidade: Oportunidade) Oportunidade
+  + delete(id: number) DeleteResult
 }
 ```
 Obs: Add Whatsapp / CPF na entidade Cliente.
