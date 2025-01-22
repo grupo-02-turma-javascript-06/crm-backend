@@ -27,6 +27,9 @@ export class Cliente {
   @Column({ length: 255, nullable: false })
   historico: string;
 
+  @Column({ type: Date })
+  data_inscricao: Date;
+
   @OneToMany(() => Oportunidade, (oportunidade) => oportunidade.cliente)
   oportunidade: Oportunidade;
 }

@@ -2,8 +2,8 @@ import {
   Entity,
   PrimaryGeneratedColumn,
   Column,
-  UpdateDateColumn,
   ManyToOne,
+  UpdateDateColumn,
 } from 'typeorm';
 import { IsIn, IsNotEmpty } from 'class-validator';
 import { Cliente } from '../../cliente/entities/cliente.entity';
@@ -22,8 +22,11 @@ export class Oportunidade {
   @Column('decimal', { precision: 10, scale: 2, nullable: false })
   valor: number;
 
-  @UpdateDateColumn()
+  @Column({ type: Date })
   abertura: Date;
+
+  @UpdateDateColumn()
+  data_atualizacao: Date;
 
   @IsNotEmpty()
   @Column({ type: Date, nullable: false })
