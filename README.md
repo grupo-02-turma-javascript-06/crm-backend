@@ -69,6 +69,8 @@ class Oportunidade{
   + update(oportunidade: Oportunidade) Oportunidade
   + delete(id: number) DeleteResult
 }
+Cliente <.. Oportunidade
+Oportunidade <.. Usuario
 ```
 Obs: Add Whatsapp / CPF na entidade Cliente.
 
