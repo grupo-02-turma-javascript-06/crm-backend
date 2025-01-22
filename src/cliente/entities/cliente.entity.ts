@@ -1,5 +1,6 @@
 import { IsNotEmpty } from 'class-validator';
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
+import { Oportunidade } from '../../oportunidade/entities/oportunidade.entity';
 
 @Entity({ name: 'tb_cliente' })
 export class Cliente {
@@ -26,6 +27,6 @@ export class Cliente {
   @Column({ length: 255, nullable: false })
   historico: string;
 
-  /*   @ManyToOne(() => Oportunidade, (oportunidade) => oportunidade.cliente)
-       oportunidade: Oportunidade[]*/
+  @OneToMany(() => Oportunidade, (oportunidade) => oportunidade.cliente)
+  oportunidade: Oportunidade;
 }

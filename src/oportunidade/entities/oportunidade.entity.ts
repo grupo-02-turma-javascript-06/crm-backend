@@ -3,8 +3,11 @@ import {
   PrimaryGeneratedColumn,
   Column,
   UpdateDateColumn,
+  ManyToOne,
 } from 'typeorm';
 import { IsIn, IsNotEmpty } from 'class-validator';
+import { Cliente } from '../../cliente/entities/cliente.entity';
+import { Usuario } from '../../usuario/entities/usuario.entity';
 
 @Entity({ name: 'tb_oportunidades' })
 export class Oportunidade {
@@ -30,4 +33,10 @@ export class Oportunidade {
   @IsIn(['aberta', 'perdida', 'fechada'])
   @Column({ nullable: false })
   status: string;
+
+  @ManyToOne(() => Cliente, (cliente) => cliente.oportunidade)
+  cliente: Cliente;
+
+  @ManyToOne(() => Usuario, (usuario) => usuario.oportunidade)
+  usuario: Usuario;
 }
