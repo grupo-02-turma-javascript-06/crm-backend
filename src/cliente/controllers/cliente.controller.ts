@@ -29,10 +29,16 @@ export class ClienteController {
     return this.clienteService.findAll();
   }
 
-  @Get('/cliente/:cliente')
+  @Get('/nome/:nome')
   @HttpCode(HttpStatus.OK)
-  findByCliente(@Param('cliente') cliente: string): Promise<Cliente[]> {
-    return this.clienteService.findByCliente(cliente);
+  findByNome(@Param('nome') nome: string): Promise<Cliente[]> {
+    return this.clienteService.findByNome(nome);
+  }
+
+  @Get('/email/:email')
+  @HttpCode(HttpStatus.OK)
+  findByEmail(@Param('email') email: string): Promise<Cliente[]> {
+    return this.clienteService.findByEmail(email);
   }
 
   @Post()
