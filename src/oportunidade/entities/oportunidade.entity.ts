@@ -23,7 +23,7 @@ export class Oportunidade {
   abertura: Date;
 
   @IsNotEmpty()
-  @Column({type: Date, nullable: false })
+  @Column({ type: Date, nullable: false })
   termino: Date;
 
   @IsNotEmpty()
