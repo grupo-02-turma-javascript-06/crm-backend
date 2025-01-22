@@ -73,7 +73,7 @@ export class OportunidadeService {
   }
 
   async update(oportunidade: Oportunidade): Promise<Oportunidade> {
-    if (oportunidade.id || oportunidade.id <= 0)
+    if (!oportunidade.id || oportunidade.id <= 0)
       throw new HttpException('Oportunidade inválida!', HttpStatus.BAD_REQUEST);
     await this.findById(oportunidade.id);
     return await this.oportunidadeRepository.save(oportunidade);

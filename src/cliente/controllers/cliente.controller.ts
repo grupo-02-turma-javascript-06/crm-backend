@@ -2,7 +2,7 @@ import { Body, Controller, Delete, Get, HttpCode, HttpStatus, Param, ParseIntPip
 import { ClienteService } from "../services/cliente.service";
 import { Cliente } from "../entities/cliente.entity";
 
-@Controller("/Cliente")
+@Controller("/cliente")
 export class ClienteController {
     constructor(
         private readonly clienteService: ClienteService){ }
@@ -13,7 +13,7 @@ export class ClienteController {
         return this.clienteService.findById(id);
     }
 
-    @Get("/all")
+    @Get()
     @HttpCode(HttpStatus.OK)
     findAll(): Promise<Cliente[]>{
         return this.clienteService.findAll();

@@ -20,13 +20,10 @@ export class Oportunidade {
   valor: number;
 
   @UpdateDateColumn()
-  @IsNotEmpty()
-  @Column({ nullable: false })
   abertura: Date;
 
-  @UpdateDateColumn()
   @IsNotEmpty()
-  @Column({ nullable: false })
+  @Column({type: Date, nullable: false })
   termino: Date;
 
   @IsNotEmpty()

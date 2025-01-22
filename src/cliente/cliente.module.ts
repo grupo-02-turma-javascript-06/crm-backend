@@ -5,9 +5,9 @@ import { ClienteService } from "./services/cliente.service";
 import { ClienteController } from "./controllers/cliente.controller";
 
 @Module({
-    controllers: [TypeOrmModule, ClienteController],
+    controllers: [ClienteController],
     providers: [ClienteService],
     imports: [TypeOrmModule.forFeature([Cliente])],
-    exports: [TypeOrmModule, ClienteService],
+    exports: [TypeOrmModule],
 })
 export class ClienteModule {};
