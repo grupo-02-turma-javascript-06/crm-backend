@@ -26,7 +26,7 @@ Descreva brevemente a API que foi construída
 ------
 
 ## 3. Diagrama de Classes
-
+```mermaid
 classDiagram
 class Usuario{
   - id: number,
@@ -40,8 +40,6 @@ class Usuario{
   + create(usuario: Usuario): Promise<Usuario>
   + update(usuario: Usuario): Promise<Usuario>
 }
-------------------------------------
-classDiagram
 class Cliente{
   - id: number,
   - nome: string,
@@ -56,8 +54,6 @@ class Cliente{
   + create(cliente: Cliente): Promise<Cliente>
   + update(cliente: Cliente): Promise<Cliente>
   + delete(id: number): Promise<DeleteResult>
-
-classDiagram
 class Oportunidade{
   - id: number,
   - nome: string,
@@ -75,8 +71,8 @@ class Oportunidade{
   + update(oportunidade: Oportunidade): Promise<Oportunidade>
   + delete(id: number): Promise<DeleteResult>
 }
+```
 Obs: Add Whatsapp / CPF na entidade Cliente.
-------
 
 ## 4. Diagrama Entidade-Relacionamento (DER)
 
