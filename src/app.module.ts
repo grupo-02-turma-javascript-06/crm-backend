@@ -13,7 +13,7 @@ import { Cliente } from './cliente/entities/cliente.entity';
   imports: [
     TypeOrmModule.forRoot({
       type: 'mysql',
-      host:'localhost',
+      host: 'localhost',
       port: 3306,
       username: 'root',
       password: 'root',
@@ -24,7 +24,7 @@ import { Cliente } from './cliente/entities/cliente.entity';
     }),
     UsuarioModule,
     OportunidadeModule,
-    ClienteModule
+    ClienteModule,
   ],
   controllers: [AppController],
   providers: [AppService],
