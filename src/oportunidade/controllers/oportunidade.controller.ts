@@ -11,6 +11,7 @@ import {
   Put,
 } from '@nestjs/common';
 import { Oportunidade } from '../entities/oportunidade.entity';
+import { OportunidadeService } from '../services/oportunidade.service';
 
 @Controller('/oportunidades')
 export class OportunidadeController {
@@ -34,10 +35,20 @@ export class OportunidadeController {
     return this.oportunidadeService.findByNome(nome);
   }
 
-  @Get('/valor/:valor')
+  @Get('/preco/maior-que/:valor')
   @HttpCode(HttpStatus.OK)
-  findByValor(@Param('valor') valor: number): Promise<Oportunidade[]> {
-    return this.oportunidadeService.findByValor(valor);
+  async findOportunidadePrecoMaiorQue(
+    @Param('valor') valor: number,
+  ): Promise<Oportunidade[]> {
+    return this.oportunidadeService.findOportunidadePrecoMaiorQue(valor);
+  }
+
+  @Get('/preco/menor-que/:valor')
+  @HttpCode(HttpStatus.OK)
+  async findOportunidadePrecoMenorQue(
+    @Param('valor') valor: number,
+  ): Promise<Oportunidade[]> {
+    return this.oportunidadeService.findOportunidadePrecoMenorQue(valor);
   }
 
   @Get('/status/:status')
