@@ -10,6 +10,7 @@ import {
   Post,
   Put,
 } from '@nestjs/common';
+import { Oportunidade } from '../entities/oportunidade.entity';
 
 @Controller('/oportunidades')
 export class OportunidadeController {
