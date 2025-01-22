@@ -2,7 +2,7 @@ import { TypeOrmModule } from "@nestjs/typeorm";
 import { Module } from "@nestjs/common";
 
 @Module({
-    controllers: [],
+    controllers: [TypeOrmModule],
     providers: [],
     imports: [TypeOrmModule],
     exports: [TypeOrmModule],
