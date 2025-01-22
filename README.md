@@ -32,7 +32,8 @@ class Usuario{
   - id: number,
   - nome: string,
   - senha: string,
-  - email: string
+  - email: string,
+  - foto: string
   + findAll() Usuario[]
   + findById(id: number) Usuario
   + findByUsuario(nome: string) Usuario[]
