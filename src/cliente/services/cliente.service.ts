@@ -15,6 +15,9 @@ export class ClienteService {
       where: {
         id,
       },
+      relations: {
+        oportunidade: true,
+      },
     });
 
     if (!cliente)
@@ -26,18 +29,39 @@ export class ClienteService {
     return cliente;
   }
   async findAll(): Promise<Cliente[]> {
-    return await this.clienteRepository.find();
+    return await this.clienteRepository.find({
+      relations: {
+        oportunidade: true,
+      },
+    });
   }
 
-  async findByCliente(nome: string): Promise<Cliente[]> {
+  async findByNome(nome: string): Promise<Cliente[]> {
     return this.clienteRepository.find({
       where: {
         nome: ILike(`%${nome}%`),
+      },
+      relations: {
+        oportunidade: true,
+      },
+    });
+  }
+
+  async findByEmail(email: string): Promise<Cliente[]> {
+    return this.clienteRepository.find({
+      where: {
+        email,
+      },
+      relations: {
+        oportunidade: true,
       },
     });
   }
 
   async create(cliente: Cliente): Promise<Cliente> {
+    const data_atual = new Date();
+    cliente.data_inscricao = data_atual;
+
     return await this.clienteRepository.save(cliente);
   }
   async update(cliente: Cliente): Promise<Cliente> {
