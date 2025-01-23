@@ -1,4 +1,4 @@
-# Nome do Projeto - Backend
+# 2Connect - Backend
 
 <br />
 
@@ -11,17 +11,45 @@
 
 ## 1. Descrição
 
-Descreva brevemente o seu projeto
+Este projeto é um sistema CRM desenvolvido para organizar e gerenciar informações de clientes, usuários e oportunidades de negócios. Com uma aplicação prática e funcional, ele permite cadastrar, consultar, atualizar e excluir dados de forma eficiente, utilizando tecnologias modernas para atender às necessidades das empresas.
 
 ------
 
 ## 2. Sobre esta API
 
-Descreva brevemente a API que foi construída
+A API de Gestão de Relacionamento com Clientes (CRM) foi criada para ajudar empresas a gerenciar clientes, usuários e oportunidades de forma simples e eficiente, permitindo realizar operações como cadastro, consulta, atualização e exclusão de dados.
 
 ### 2.1. Principais Funcionalidades
 
-1. Liste as principais funcionalidades e as features especiais do sistema
+#### 1. **Gerenciamento de Clientes**
+
+- Cadastrar, atualizar e excluir clientes.
+- Buscar clientes por nome, e-mail ou ID.
+- Listar todos os clientes cadastrados.
+
+#### 2. **Gerenciamento de Oportunidades**
+
+- Criar, editar e excluir oportunidades de negócio.
+- Filtrar oportunidades por status (aberta, fechada, perdida) ou valor.
+- Buscar oportunidades por nome ou ID.
+- Listar todas as oportunidades registradas.
+
+#### 3. **Gerenciamento de Usuários**
+
+- Cadastrar, atualizar e listar usuários.
+
+- Buscar usuários por nome, e-mail ou ID.
+
+- Garantir segurança com validação de e-mail único.
+
+  ------
+
+  ####  Diferenciais do Sistema
+
+  - **Fácil de usar**: Interface simples e intuitiva.
+  - **Organização total**: Tudo centralizado em um só lugar.
+  - **Flexível**: Adapta-se às necessidades da sua empresa.
+  - **Seguro e confiável**: Desenvolvido com tecnologia moderna.
 
 ------
 
@@ -33,10 +61,11 @@ class Usuario{
   - nome: string,
   - senha: string,
   - email: string,
-  - foto: string
+  - foto: string,
   + findAll() Usuario[]
   + findById(id: number) Usuario
   + findByUsuario(nome: string) Usuario[]
+  + findByEmail(email: string) Usuario[]
   + create(usuario: Usuario) Usuario
   + update(usuario: Usuario) Usuario
 }
@@ -47,9 +76,11 @@ class Cliente{
   - email: string,
   - foto: string,
   - historico: string
+  - data_inscricao: date
   + findAll() Cliente[]
   + findById(id: number) Cliente
-  + findByCliente(nome: string) Cliente[]
+  + findByNome(nome: string): Cliente[]
+  + findByEmail(email: string): Cliente[]
   + create(cliente: Cliente) Cliente
   + update(cliente: Cliente) Cliente
   + delete(id: number) DeleteResult
@@ -59,13 +90,15 @@ class Oportunidade{
   - nome: string,
   - valor: decimal,
   - abertura: date,
+  - data_atualizacao: date,
   - termino: date,
   - status: string
   + findAll() Oportunidade[]
   + findById(id: number) Oportunidade
   + findByNome(nome: string) Oportunidade[]
-  + findByValor(valor: decimal) Oportunidade[]
   + findByStatus(status: string) Oportunidade[]
+  + findOportunidadePrecoMaiorQue(valor: number): Oportunidade[]
+  + findOportunidadePrecoMenorQue(valor: number): Oportunidade[]
   + create(oportunidade: Oportunidade) Oportunidade
   + update(oportunidade: Oportunidade) Oportunidade
   + delete(id: number) DeleteResult
@@ -73,15 +106,12 @@ class Oportunidade{
 Cliente <.. Oportunidade
 Oportunidade <.. Usuario
 ```
-Obs: Add Whatsapp / CPF na entidade Cliente.
-
 ## 4. Diagrama Entidade-Relacionamento (DER)
 
-Adicione a imagem do DER
-
 <div align="center">
-    <img src="imagem" title="source: imgur.com" />
+    <img src="./doc/images/CRM.svg" title="Diagrama Entidade-Relacionamento (DER)" width="50%"/>
 </div>
+
 
 
 
