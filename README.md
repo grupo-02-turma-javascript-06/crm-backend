@@ -99,6 +99,7 @@ class Oportunidade{
   + findByStatus(status: string) Oportunidade[]
   + findOportunidadePrecoMaiorQue(valor: number): Oportunidade[]
   + findOportunidadePrecoMenorQue(valor: number): Oportunidade[]
+  + changeStatus(params): UpdateResult
   + create(oportunidade: Oportunidade) Oportunidade
   + update(oportunidade: Oportunidade) Oportunidade
   + delete(id: number) DeleteResult
