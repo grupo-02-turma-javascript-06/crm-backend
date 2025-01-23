@@ -12,6 +12,7 @@ import {
 } from '@nestjs/common';
 import { Oportunidade } from '../entities/oportunidade.entity';
 import { OportunidadeService } from '../services/oportunidade.service';
+import { UpdateResult } from 'typeorm';
 
 @Controller('/oportunidades')
 export class OportunidadeController {
@@ -67,6 +68,12 @@ export class OportunidadeController {
   @HttpCode(HttpStatus.CREATED)
   update(@Body() oportunidade: Oportunidade): Promise<Oportunidade> {
     return this.oportunidadeService.update(oportunidade);
+  }
+
+  @Put('/mudar-status')
+  @HttpCode(HttpStatus.OK)
+  chageStatus(@Body() params): Promise<UpdateResult> {
+    return this.oportunidadeService.changeStatus(params);
   }
 
   @Delete('/:id')

@@ -1,6 +1,6 @@
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { Oportunidade } from '../entities/oportunidade.entity';
-import { DeleteResult, ILike, Repository } from 'typeorm';
+import { DeleteResult, ILike, Repository, UpdateResult } from 'typeorm';
 import { InjectRepository } from '@nestjs/typeorm';
 import { ClienteService } from '../../cliente/services/cliente.service';
 import { UsuarioService } from '../../usuario/services/usuario.service';
@@ -93,6 +93,23 @@ export class OportunidadeService {
         usuario: true,
       },
     });
+  }
+
+  async changeStatus(params): Promise<UpdateResult> {
+    if (!['aberta', 'fechada', 'perdida'].includes(params.status)) {
+      throw new Error(
+        'Status inválido. Os valores permitidos são: aberta, fechada, perdida.',
+      );
+    }
+
+    await this.findById(params.id);
+
+    return await this.oportunidadeRepository
+      .createQueryBuilder()
+      .update(Oportunidade)
+      .set({ status: params.status })
+      .where('id = :id', { id: params.id })
+      .execute();
   }
 
   async create(oportunidade: Oportunidade): Promise<Oportunidade> {
