@@ -109,7 +109,7 @@ Oportunidade <.. Usuario
 ## 4. Diagrama Entidade-Relacionamento (DER)
 
 <div align="center">
-    <img src="./doc/images/CRM.svg" title="Diagrama Entidade-Relacionamento (DER)"/>
+    <img src="https://ik.imagekit.io/yijg14v4w/CRM/CRM.png?updatedAt=1737641447297" title="Diagrama Entidade-Relacionamento (DER)"/>
 </div>
 
 
