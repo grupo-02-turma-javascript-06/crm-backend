@@ -10,7 +10,7 @@ async function bootstrap() {
     .setDescription('Projeto 2Connect')
     .setContact(
       'Grupo 02 - Turma JavaScript06 ',
-      'https://github.com/grupo-02-turma-javascript-06',
+      'https://github.com/grupo-02-turma-javascript-06/',
       'grupo02turmajavascript06@gmail.com',
     )
     .setVersion('1.0')
