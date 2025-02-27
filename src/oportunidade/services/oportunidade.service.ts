@@ -3,7 +3,6 @@ import { Oportunidade } from '../entities/oportunidade.entity';
 import { DeleteResult, ILike, Repository, UpdateResult } from 'typeorm';
 import { InjectRepository } from '@nestjs/typeorm';
 import { ClienteService } from '../../cliente/services/cliente.service';
-import { UsuarioService } from '../../usuario/services/usuario.service';
 
 @Injectable()
 export class OportunidadeService {
@@ -11,14 +10,12 @@ export class OportunidadeService {
     @InjectRepository(Oportunidade)
     private oportunidadeRepository: Repository<Oportunidade>,
     private clienteService: ClienteService,
-    private usuarioService: UsuarioService,
   ) {}
 
   async findAll(): Promise<Oportunidade[]> {
     return this.oportunidadeRepository.find({
       relations: {
         cliente: true,
-        usuario: true,
       },
     });
   }
@@ -30,7 +27,6 @@ export class OportunidadeService {
       },
       relations: {
         cliente: true,
-        usuario: true,
       },
     });
 
@@ -50,28 +46,25 @@ export class OportunidadeService {
       },
       relations: {
         cliente: true,
-        usuario: true,
       },
     });
   }
 
-  // Método de pesquisa para maior valor
   async findOportunidadePrecoMaiorQue(valor: number): Promise<Oportunidade[]> {
     return this.oportunidadeRepository
       .createQueryBuilder('oportunidade')
       .leftJoin('oportunidade.cliente', 'cliente')
-      .leftJoin('oportunidade.usuario', 'usuario')
+
       .where('oportunidade.valor > :valor', { valor })
       .orderBy('oportunidade.valor', 'ASC')
       .getMany();
   }
 
-  // Método de pesquisa para menor valor
   async findOportunidadePrecoMenorQue(valor: number): Promise<Oportunidade[]> {
     return this.oportunidadeRepository
       .createQueryBuilder('oportunidade')
       .leftJoin('oportunidade.cliente', 'cliente')
-      .leftJoin('oportunidade.usuario', 'usuario')
+
       .where('oportunidade.valor < :valor', { valor })
       .orderBy('oportunidade.valor', 'DESC')
       .getMany();
@@ -90,7 +83,6 @@ export class OportunidadeService {
       },
       relations: {
         cliente: true,
-        usuario: true,
       },
     });
   }
@@ -115,8 +107,6 @@ export class OportunidadeService {
   async create(oportunidade: Oportunidade): Promise<Oportunidade> {
     await this.clienteService.findById(oportunidade.cliente.id);
 
-    await this.usuarioService.findById(oportunidade.usuario.id);
-
     const data_atual = new Date();
     oportunidade.abertura = data_atual;
     oportunidade.data_atualizacao = data_atual;
@@ -130,8 +120,6 @@ export class OportunidadeService {
     await this.findById(oportunidade.id);
 
     await this.clienteService.findById(oportunidade.cliente.id);
-
-    await this.usuarioService.findById(oportunidade.usuario.id);
 
     const data_atual = new Date();
     oportunidade.data_atualizacao = data_atual;

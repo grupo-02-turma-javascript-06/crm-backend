@@ -11,20 +11,13 @@ export class UsuarioService {
   ) {}
 
   async findAll(): Promise<Usuario[]> {
-    return await this.usuarioRepository.find({
-      relations: {
-        oportunidade: true,
-      },
-    });
+    return await this.usuarioRepository.find({});
   }
 
   async findById(id: number): Promise<Usuario> {
     const usuario = await this.usuarioRepository.findOne({
       where: {
         id,
-      },
-      relations: {
-        oportunidade: true,
       },
     });
 
@@ -42,9 +35,6 @@ export class UsuarioService {
       where: {
         nome: ILike(`%${nome}%`),
       },
-      relations: {
-        oportunidade: true,
-      },
     });
   }
 
@@ -52,9 +42,6 @@ export class UsuarioService {
     return await this.usuarioRepository.findOne({
       where: {
         email,
-      },
-      relations: {
-        oportunidade: true,
       },
     });
   }
